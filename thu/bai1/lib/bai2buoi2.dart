@@ -30,7 +30,7 @@ void main(List<String> args) {
       "${arr[3].toString().substring(0, 1).toUpperCase()}${arr[3].toString().substring(1, 3)}";
   String s2 = "${arr[5]} ${arr[4]}";
   String s3 = "${arr[9][1]}";
-  String s4 = "${arr[8].values.first} ${arr[8][1]}";
+  String s4 = "${arr[8][true]} ${arr[8][1]}";
   String s5 = "${arr[9][0]} ${arr[1].toInt()} ${arr[9][2]}";
   String s6 =
       "${arr[11]["flutter"].substring(0, 1).toUpperCase()}${arr[11]["flutter"].substring(1, 4)}";
