@@ -32,8 +32,8 @@ void main(List<String> args) {
       "Đ${str.substring(2, 15)} buổi ${str.substring(25, 35)}về Dart: ${str.substring(44, 49).replaceAll(" ", "").toUpperCase()} BASIC (phần 1)");
 
   print(str.replaceAll("của", "") +
-      str.replaceAll("basics", "BASIC") +
-      str.replaceAll("dart", "Dart") +
-      str.replaceAll("đây", "Đây") +
-      str.replaceAll("...", ""));
+      .replaceAll("basics", "BASIC") +
+      .replaceAll("dart", "Dart") +
+      .replaceAll("đây", "Đây") +
+      .replaceAll("...", ""));
 }
