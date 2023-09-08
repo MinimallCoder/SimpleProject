@@ -30,10 +30,10 @@ void main(List<String> args) {
   /// ký tự $ có tác dụng chèn giá trị của một biến vào trong chuỗi để tạo thành một chuỗi mới.
   print(
       "Đ${str.substring(2, 15)} buổi ${str.substring(25, 35)}về Dart: ${str.substring(44, 49).replaceAll(" ", "").toUpperCase()} BASIC (phần 1)");
-
-  print(str.replaceAll("của", "") +
-      .replaceAll("dart basics", "DART BASIC") +
-      .replaceAll("dart", "Dart") +
-      .replaceAll("đây", "Đây") +
+  
+  print(str.replaceAll("của", "") 
+      .replaceAll("dart basics", "DART BASIC") 
+      .replaceAll("dart", "Dart")
+      .replaceAll("đây", "Đây") 
       .replaceAll("...", ""));
 }
