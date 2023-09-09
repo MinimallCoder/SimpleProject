@@ -44,6 +44,8 @@ class A {
   static List<double> stListDouble = [1.1, 2.2, 3.3];
 }
 
+/// Các hàm chuyển đổi qua lại giữa string, int, double.
+
 String getIntFromString(int input) => input.toString();
 String getDoubleFromString(double input) => input.toString();
 int getStringfromInt(String input) => int.parse(input);
