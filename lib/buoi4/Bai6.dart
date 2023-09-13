@@ -8,16 +8,16 @@ void main() {
   /// Duyệt qua các số từ 0 đến n
   for (int i = 0; i <= n; i++) {
     // Kiểm tra xem số i có phải là số nguyên tố hay không
-    bool NonPrime = true;
+    bool SoNguyenTo = true;
     for (int j = 2; j * j <= i; j++) {
       if (i % j == 0) {
-        NonPrime = false;
+        SoNguyenTo = false;
         break;
       }
     }
 
     /// Nếu là số nguyên tố thì thêm vào mảng
-    if (NonPrime) {
+    if (SoNguyenTo) {
       Prime.add(i);
     }
   }
