@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 void main() {
   final phones = <String>['Nokia', 'Xiaomi', 'iPhone'];
 
@@ -17,20 +19,16 @@ void main() {
   /// Không dùng biến tạm
   final list = <String>['Nokia', 'Xiaomi', 'iPhone'];
 
-  for (int i = 0; i < list.length; i++) {
-    if (i == 0) {
-      String temp = list[i];
-      list[i] = list[2];
-      list[2] = temp;
-    }
+  print(list);
+  print(
+      '${identityHashCode(phones[0])} - ${identityHashCode(phones[1])} - ${identityHashCode(phones[2])}');
+  for (int i = 1; i < 2; i++) {
+    final temp = list[i];
+    list[i] = list[i + 1];
+    list[i + 1] = temp;
   }
 
   print(list);
-  print(phones);
-  print(
-      '${identityHashCode(phones[0])} - ${identityHashCode(phones[1])} - ${identityHashCode(phones[2])}');
-
-  print(phones);
   print(
       '${identityHashCode(phones[0])} - ${identityHashCode(phones[1])} - ${identityHashCode(phones[2])}');
 }
