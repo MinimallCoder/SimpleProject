@@ -1,3 +1,4 @@
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_overrides, overridden_fields, annotate_overrides
 class LopHoc {
   final String Tenlophoc;
   final int SLhocvien;
@@ -31,7 +32,7 @@ class LopHoc {
 }
 
 class Flutter extends LopHoc
-    implements buidandroid, buildios, builddeskapp, buildweb {
+    implements Buidandroid, Buildios, Builddeskapp, Buildweb {
   Flutter(
       {required super.Tenlophoc,
       required super.SLhocvien,
@@ -52,7 +53,7 @@ class Flutter extends LopHoc
   ];
 }
 
-class Android extends LopHoc implements buidandroid {
+class Android extends LopHoc implements Buidandroid {
   Android(
       {required super.Tenlophoc,
       required super.SLhocvien,
@@ -68,7 +69,7 @@ class Android extends LopHoc implements buidandroid {
   final List<String> hocvienbuild = ['build android'];
 }
 
-class Ios extends LopHoc implements buildios {
+class Ios extends LopHoc implements Buildios {
   Ios(
       {required super.Tenlophoc,
       required super.SLhocvien,
@@ -84,7 +85,7 @@ class Ios extends LopHoc implements buildios {
   final List<String> hocvienbuild = ['build ios'];
 }
 
-class Web extends LopHoc implements buildweb {
+class Web extends LopHoc implements Buildweb {
   Web(
       {required super.Tenlophoc,
       required super.SLhocvien,
@@ -100,13 +101,13 @@ class Web extends LopHoc implements buildweb {
   final List<String> hocvienbuild = ['build web'];
 }
 
-class buidandroid {}
+class Buidandroid {}
 
-class buildios {}
+class Buildios {}
 
-class buildweb {}
+class Buildweb {}
 
-class builddeskapp {}
+class Builddeskapp {}
 
 void main() {
   /// Tạo các lớp học
