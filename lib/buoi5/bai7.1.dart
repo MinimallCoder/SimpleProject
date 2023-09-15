@@ -24,15 +24,13 @@ class LopHoc {
   void addStudents() {
     final randomList = List.generate(
         remainMembers(), (index) => String.fromCharCode(index + 65));
-
-    /// toSet() Xóa bỏ trùng lặp có thể xảy ra
     randomList.toSet().toList();
-
     for (int i = 0; i < randomList.length; i++) {
-      /// contains() kiểm tra xem một phần tử có tồn tại trong list hay không?
-      if (!Hocvien.contains(randomList[i])) {
-        Hocvien.add(randomList[i]);
+      if (remainMembers() == 0) {
+        break;
       }
+      Hocvien.add(randomList[i]);
+      remainMembers();
     }
   }
 
