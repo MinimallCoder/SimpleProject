@@ -138,7 +138,7 @@ void main() {
 
   final web = Web(
     Tenlophoc: 'Web',
-    SLhocvien: 8,
+    SLhocvien: 14,
     Hocvien: ['F'],
     hocvienbuild: ['build web'],
   );
