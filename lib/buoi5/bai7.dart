@@ -1,15 +1,13 @@
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_overrides, overridden_fields, annotate_overrides
+import 'dart:math';
+
 class LopHoc {
   final String Tenlophoc;
   final int SLhocvien;
   final List<String> Hocvien;
-  final List<String> hocvienbuild;
-
   LopHoc(
       {required this.Tenlophoc,
       required this.SLhocvien,
-      required this.Hocvien,
-      required this.hocvienbuild});
+      required this.Hocvien});
 
   List<String> getHocVien() {
     return Hocvien;
@@ -21,12 +19,28 @@ class LopHoc {
     return SLhocvien - Hocvien.length;
   }
 
+  /// Thêm học sinh còn thiếu vào các lớp
+  void addStudents() {
+    // Biến lưu trữ các học viên đã được thêm vào
+    List<String> unique = [];
+    // Lặp lại cho đến khi danh sách học viên đủ
+    while (Hocvien.length < SLhocvien) {
+      // Tạo học viên ngẫu nhiên
+      String tenhocvien = String.fromCharCode(Random().nextInt(26) + 65);
+      // Kiểm tra xem học viên đã có trong danh sách hay chưa
+      if (!unique.contains(tenhocvien)) {
+        // Thêm học viên vào danh sách
+        Hocvien.add(tenhocvien);
+        unique.add(tenhocvien);
+      }
+    }
+  }
+
   void tao() {
     print('Lớp học ${Tenlophoc}:');
     print('tên lớp học: ${Tenlophoc}');
     print('SL học viên: ${SLhocvien}');
     print('Học viên: ${getHocVien()}');
-    print('Tính năng build: ${hocvienbuild} ');
     print('Số lượng thành viên còn thiếu: ${remainMembers()}');
   }
 }
@@ -36,113 +50,90 @@ class Flutter extends LopHoc
   Flutter(
       {required super.Tenlophoc,
       required super.SLhocvien,
-      required super.Hocvien,
-      required super.hocvienbuild});
+      required super.Hocvien});
 
   @override
   void tao() {
     super.tao();
+    print(
+        'Tính năng build: Build android, Build ios, Build web, build desktop app');
   }
-
-  /// Danh sách tính năng build của các học viên trong lớp Flutter
-  final List<String> hocvienbuild = [
-    'build android',
-    'build ios',
-    'build web',
-    'build desktop app'
-  ];
 }
+
+abstract class Buidandroid {}
+
+abstract class Buildios {}
+
+abstract class Buildweb {}
+
+abstract class Builddeskapp {}
 
 class Android extends LopHoc implements Buidandroid {
   Android(
       {required super.Tenlophoc,
       required super.SLhocvien,
-      required super.Hocvien,
-      required super.hocvienbuild});
+      required super.Hocvien});
 
   @override
   void tao() {
     super.tao();
+    print('Tính năng build: Build android');
   }
-
-  /// Danh sách tính năng build của các học viên trong lớp Android
-  final List<String> hocvienbuild = ['build android'];
 }
 
 class Ios extends LopHoc implements Buildios {
   Ios(
       {required super.Tenlophoc,
       required super.SLhocvien,
-      required super.Hocvien,
-      required super.hocvienbuild});
+      required super.Hocvien});
 
   @override
   void tao() {
     super.tao();
+    print('Tính năng build: Build ios');
   }
-
-  /// Danh sách tính năng build của các học viên trong lớp iOS
-  final List<String> hocvienbuild = ['build ios'];
 }
 
 class Web extends LopHoc implements Buildweb {
   Web(
       {required super.Tenlophoc,
       required super.SLhocvien,
-      required super.Hocvien,
-      required super.hocvienbuild});
+      required super.Hocvien});
 
   @override
   void tao() {
     super.tao();
+    print('Tính năng build: Build web');
   }
-
-  /// Danh sách tính năng build của các học viên trong lớp Web
-  final List<String> hocvienbuild = ['build web'];
 }
 
-class Buidandroid {}
-
-class Buildios {}
-
-class Buildweb {}
-
-class Builddeskapp {}
-
 void main() {
-  /// Tạo các lớp học
+  // Tạo các lớp học
   final flutter = Flutter(
     Tenlophoc: 'Flutter',
     SLhocvien: 11,
     Hocvien: ['A', 'B'],
-    hocvienbuild: [
-      'build android',
-      'build ios',
-      'build web',
-      'build desktop app'
-    ],
   );
-
   final android = Android(
     Tenlophoc: 'Android',
     SLhocvien: 12,
     Hocvien: ['B', 'C', 'D'],
-    hocvienbuild: ['build android'],
   );
-
   final ios = Ios(
     Tenlophoc: 'iOS',
     SLhocvien: 13,
     Hocvien: ['D', 'E', 'F'],
-    hocvienbuild: ['build ios'],
   );
-
   final web = Web(
     Tenlophoc: 'Web',
     SLhocvien: 14,
     Hocvien: ['F'],
-    hocvienbuild: ['build web'],
   );
+// Thêm học sinh còn thiếu
+  flutter.addStudents();
+  android.addStudents();
+  ios.addStudents();
+  web.addStudents();
   flutter.tao();
   android.tao();
   ios.tao();
