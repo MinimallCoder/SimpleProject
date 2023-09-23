@@ -1,4 +1,10 @@
 # SimpleProject :
-Bao gồm các bài học về dart flutter
-Và các bài tập có của mỗi bài học
-Cùng với 1 phần mềm thực hành nhỏ có khả năng tìm hình ảnh chất lượng cao. 
+# Bao gồm các bài học về dart flutter,
+# Và các bài tập có của mỗi bài học,
+# Cùng với 1 ứng dụng có khả năng giúp trẻ em trên 6 tuổi học thêm về ca dao tục ngữ thành ngữ Việt Nam đã biết đánh vần hoặc có thể nghe hiểu.
+# Các chức năng chính:
+# Học và ghi nhớ ý nghĩa của các ca dao tục ngữ thành ngữ Việt Nam,
+# Điền câu các bé sẽ đọc hoặc nghe những gợi ý có sẵn sau đó điền câu ca dao tục ngữ phù hợp,
+# Flashcard giúp các bé ôn lại những ca dao tục ngữ đã học thông qua hình ảnh minh họa.
+
+
