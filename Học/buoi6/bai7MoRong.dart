@@ -4,17 +4,20 @@ class LopHoc {
   final String Tenlophoc;
   final int SLhocvien;
   final List<String> Hocvien;
-  late int Sobuoi;
+  late int Sobuoihoc = 10;
 
-  static var classes;
   LopHoc(
       {required this.Tenlophoc,
       required this.SLhocvien,
-      required this.Hocvien,
-      this.Sobuoi = 10});
+      required this.Hocvien});
 
   List<String> getHocVien() {
     return Hocvien;
+  }
+
+  /// Lấy số buổi học của lớp
+  int getSobuoihoc() {
+    return Sobuoihoc;
   }
 
   /// Thêm remainMembers(), tính toán
@@ -26,31 +29,55 @@ class LopHoc {
   /// Thêm học sinh còn thiếu vào các lớp
   void addStudents() {
     // Biến lưu trữ các học viên đã được thêm vào
-    List<String> unique = [];
+    Map<String, bool> unique = {};
     // Lặp lại cho đến khi danh sách học viên đủ
     while (Hocvien.length < SLhocvien) {
       // Tạo học viên ngẫu nhiên
       String tenhocvien = String.fromCharCode(Random().nextInt(26) + 65);
       // Kiểm tra xem học viên đã có trong danh sách hay chưa
-      if (!unique.contains(tenhocvien)) {
+      if (!unique.containsKey(tenhocvien)) {
         // Thêm học viên vào danh sách
         Hocvien.add(tenhocvien);
-        unique.add(tenhocvien);
+        unique[tenhocvien] = true;
       }
     }
   }
 
-  void updateSobuoi(int sobuoi) {
-    Sobuoi = sobuoi;
-    if (this.Tenlophoc == 'Flutter') {
-      // Cập nhật số buổi học cho các lớp học liên quan
-      var android;
-      android.Sobuoi = sobuoi + 7;
-      var ios;
-      ios.Sobuoi = sobuoi + 10;
-      var web;
-      web.Sobuoi = sobuoi - 2;
+  /// Đặt số buổi học của lớp
+  void setSobuoihoc(int sobuoihoc) {
+    if (sobuoihoc < 10) {
+      throw Exception("Số buổi học không được nhỏ hơn 10");
     }
+    Sobuoihoc = sobuoihoc;
+  }
+
+  /// Tăng số buổi học của lớp lên 1
+  void tangSobuoihoc() {
+    Sobuoihoc++;
+  }
+
+  /// Giảm số buổi học của lớp đi 1
+  void giamSobuoihoc() {
+    Sobuoihoc--;
+  }
+
+  /// Số buổi học của lớp Android luôn nhiều hơn Flutter 5 buổi
+  int getSobuoihocAndroid() {
+    return Sobuoihoc + 5;
+  }
+
+  get SobuoihocAndroid => Sobuoihoc + 5;
+
+  /// Số buổi học của lớp ios luôn nhiều hơn Android 3 buổi
+  int getSobuoihocIos() {
+    return SobuoihocAndroid + 3;
+  }
+
+  int get SobuoihocIos => SobuoihocAndroid + 3;
+
+  /// Số buổi học của lớp Web luôn ít hơn Flutter 3 buổi
+  int getSobuoihocWeb() {
+    return Sobuoihoc - 2;
   }
 
   void tao() {
@@ -59,12 +86,11 @@ class LopHoc {
     print('SL học viên: ${SLhocvien}');
     print('Học viên: ${getHocVien()}');
     print('Số lượng thành viên còn thiếu: ${remainMembers()}');
-    print('Số buổi học: ${Sobuoi}');
   }
 }
 
 class Flutter extends LopHoc
-    implements Buidandroid, Buildios, Builddeskapp, Buildweb {
+    implements Buidandroid, Buildios, Buildweb, Builddeskapp {
   Flutter(
       {required super.Tenlophoc,
       required super.SLhocvien,
@@ -75,6 +101,7 @@ class Flutter extends LopHoc
     super.tao();
     print(
         'Tính năng build: Build android, Build ios, Build web, build desktop app');
+    print('Số buổi học: ${getSobuoihoc()}');
   }
 }
 
@@ -96,6 +123,7 @@ class Android extends LopHoc implements Buidandroid {
   void tao() {
     super.tao();
     print('Tính năng build: Build android');
+    print('Số buổi học của lớp Android: ${getSobuoihocAndroid()}');
   }
 }
 
@@ -109,6 +137,7 @@ class Ios extends LopHoc implements Buildios {
   void tao() {
     super.tao();
     print('Tính năng build: Build ios');
+    print('Số buổi học của lớp iOS: ${getSobuoihocIos()}');
   }
 }
 
@@ -118,10 +147,16 @@ class Web extends LopHoc implements Buildweb {
       required super.SLhocvien,
       required super.Hocvien});
 
+  int get SobuoihocWeb => Sobuoihoc - 2;
+
   @override
   void tao() {
     super.tao();
     print('Tính năng build: Build web');
+    if (SobuoihocWeb < 10) {
+      throw Exception("Số buổi học không được nhỏ hơn 10");
+    }
+    print('Số buổi học của lớp Web: ${getSobuoihocWeb()}');
   }
 }
 
@@ -147,11 +182,11 @@ void main() {
     SLhocvien: 14,
     Hocvien: ['F'],
   );
-
-  // Thiết lập số buổi học cho các lớp học
-  flutter.Sobuoi = 12;
-
-  // In thông tin các lớp học
+// Thêm học sinh còn thiếu
+  flutter.addStudents();
+  android.addStudents();
+  ios.addStudents();
+  web.addStudents();
   flutter.tao();
   android.tao();
   ios.tao();
