@@ -22,16 +22,16 @@ class LopHoc {
   /// Thêm học sinh còn thiếu vào các lớp
   void addStudents() {
     // Biến lưu trữ các học viên đã được thêm vào
-    List<String> unique = [];
+    Map<String, bool> unique = {};
     // Lặp lại cho đến khi danh sách học viên đủ
     while (Hocvien.length < SLhocvien) {
       // Tạo học viên ngẫu nhiên
       String tenhocvien = String.fromCharCode(Random().nextInt(26) + 65);
       // Kiểm tra xem học viên đã có trong danh sách hay chưa
-      if (!unique.contains(tenhocvien)) {
+      if (!unique.containsKey(tenhocvien)) {
         // Thêm học viên vào danh sách
         Hocvien.add(tenhocvien);
-        unique.add(tenhocvien);
+        unique[tenhocvien] = true;
       }
     }
   }

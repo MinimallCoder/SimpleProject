@@ -26,4 +26,32 @@ bool a(int num) {
     }
   }
   return false;
-}*/
+}
+void ReverseString(List<String> s) {
+  int i = 0;
+  int j = s.length - 1;
+  while (j > i) {
+    String store = s[i];
+    s[i] = s[j];
+    s[j] = store;
+    i++;
+    j--;
+  }
+}
+
+String defangIPaddr(String address) {
+  return address.replaceAll(".","[]");
+}
+
+String toLowerCase(String s) {
+  String result = "";
+  for (int i = 0; i < s.length; i++) {
+    if (s.codeUnitAt(i) >= 65 && s.codeUnitAt(i) <= 90) {
+      int value = s.codeUnitAt(i) + 32;
+      result = result + String.fromCharCode(value);
+    } else {
+      result = result + s[i];
+    }
+  }
+}
+*/
